@@ -1,0 +1,912 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+  font-family: Inter, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #080e17;
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+}
+
+/* General */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 10% 1% 3%;
+  background-color: black;
+}
+#search {
+  display: flex;
+  color: #fff;
+  font-size: 2rem;
+  align-items: center;
+  text-decoration: none;
+  
+}
+#header-title {
+  display: flex;
+  align-items: center;
+  /* gap: 5%; */
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#header-title a {
+  text-decoration: none;
+  color: #fff;
+}
+#header-title img {
+  height: 70px;
+  width: auto;
+}
+.header-info {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.header-info h2 {
+  font-weight: 400;
+}
+.header-info a,
+.header-info i {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 5%;
+}
+.header-info a:hover {
+  font-weight: 600;
+  color: #c5c5d9;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1%;
+  background-color: #000000;
+}
+#footer h5,
+#footer h3 {
+  color: #d1d1d1;
+  font-size: 1.2rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+#footer h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.5s ease, color 0.5s ease, font-size 0.5s ease;
+}
+#footer-links {
+  display: flex;
+  gap: 30%;
+  margin-right: 6.3%;
+  margin-bottom: 1%;
+}
+.footer-link-box {
+  display: flex;
+  align-items: center;
+  gap: 7%;
+}
+#footer i {
+  color: #fff;
+  transition: transform 0.5s ease, color 0.5s ease, font-size 0.5s ease;
+}
+#footer a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+#footer a:hover h3,
+#footer a:hover i {
+  font-size: 1.7rem;
+  color: #999;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+button:hover {
+  background-color: darkblue;
+}
+
+.cards {
+  margin: 3% 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card {
+  display: flex;
+  background-color: #ffffff;
+  width: 45%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.card img {
+  border-radius: 10px 0 0 10px;
+}
+
+.card-info {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.card-info h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.card-info .cedula {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.card-info .carrera {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.8;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+}
+
+.card-info h3 {
+  margin: 15px 0 5px 0;
+  font-size: 18px;
+}
+
+.card-info .description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.divisor {
+  margin: auto;
+  width: 80%;
+}
+
+.select-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 30%;
+  height: 50px;
+}
+.select-box {
+  border: none;
+  appearance: none;
+  padding: 0 30px 0 15px;
+  width: 100%;
+  color: #080e17;
+  background-color: #ffffff;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.select-container .icon-container {
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* FIN: General */
+
+/* Seccion Home */
+.home-info {
+  background-image: url("img/4-4.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  display: flex;
+  color: white;
+  text-align: right;
+}
+.home-info h2 {
+  font-size: 2rem;
+}
+.home-info p {
+  margin: 1% 0 0 40%;
+}
+
+.overlay {
+  padding: 10rem;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.overlay p {
+  margin-bottom: 2%;
+}
+
+/* Seccion cartelera */
+
+.cartelera {
+  margin: 2% 3%;
+}
+.cartelera h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1%;
+}
+.cartelera-head {
+  margin: 1% 3%;
+  display: flex;
+  justify-content: space-between;
+}
+.boxes-container {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  flex-wrap: wrap;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  transition: transform 0.3s ease;
+}
+.box a {
+  text-decoration: none;
+}
+.box:hover {
+  transform: scale(1.05); /* Aumenta el tamaño del contenedor al hacer hover */
+}
+.estreno_text {
+  padding: 2%;
+  color: #ffffff;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  background-color: #00026c;
+  border-radius: 10px 10px 0 0;
+}
+.box img {
+  height: 450px;
+  width: 320px;
+  border-radius: 10px;
+}
+.box,
+.estreno img {
+  border-radius: 0 0 10px 10px;
+}
+
+/* cards para noticias */
+
+#new-sect-header {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 3%;
+}
+
+.cards.news {
+  align-items: center;
+  flex-direction: column;
+}
+
+.card.new {
+  width: 75%;
+}
+
+.card.new img {
+  border-radius: 4px 0 0 4px;
+  width: 400px;
+  height: auto;
+}
+
+.card.new button {
+  color: #00026c;
+  background-color: #ffffff00;
+  border: 2px solid #00026c;
+  padding: 10px 50px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 400;
+}
+
+.card.new button:hover {
+  font-weight: bold;
+  background-color: #cacaca;
+  padding: 10px 70px;
+}
+
+.card-info.new {
+  padding: 2% 5%;
+  margin: 1%;
+}
+
+.card-info.new h3 {
+  margin: 1.3% 0 2% 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* fin: cards noticias */
+
+/* 
+ *
+ * 
+ *
+ * PAGINA ADMIN CSS
+ * 
+ * 
+ */
+
+/* Fondo con bg image y con opacity */
+#admin-login-bg {
+  background-image: url("img/4-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#admin-login-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+/* formulario */
+.card.form {
+  margin-top: 5%;
+  margin-bottom: auto;
+  width: 40%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-info.form {
+  padding: 5%;
+  width: 100%;
+}
+
+.card-info.form h2 {
+  font-size: 3rem;
+  color: #212121;
+}
+
+.card-info.form h3 {
+  margin-bottom: 5%;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #565656;
+}
+
+.card-info.form h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card.form-field {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #8d8d8d;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
+.form-input:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* 
+ *
+ * 
+ *
+ * PAGINA PELICULA V1 CSS
+ * 
+ * 
+ */
+
+#movie-sect-header {
+  width: 60%;
+  margin: 2% auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.cards.movies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card.movie {
+  width: 60%;
+}
+.card.movie img {
+  border-radius: 4px 0 0 4px;
+  width: 250px;
+  height: auto;
+}
+.card.movie h2 {
+  margin: 2% 0;
+}
+.card.movie h3 {
+  font-weight: 400;
+  margin: 2% 0 5% 0;
+}
+.card-info.movie {
+  padding: 2% 5%;
+  width: 100%;
+}
+.card-info.movie table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.card-info.movie th,
+.card-info.movie td {
+  text-align: left;
+}
+.card-info.movie th {
+  font-weight: bold;
+}
+.card-info.movie button {
+  margin: 2% 0;
+  width: 50%;
+}
+.container-sect.movie,
+.container-sect.sala {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+}
+.container-sect.movie {
+  width: 100%;
+  margin: 3% 0;
+  justify-content: center;
+}
+/* 
+ *
+ * 
+ *
+ * PAGINA PELICULAS V2 CSS
+ * 
+ * 
+ */
+.box.movie2 {
+  background-color: #c8c8c8;
+  border-radius: 10px;
+}
+.boxes-container.movie2 img {
+  border-radius: 5px 5px 0 0;
+}
+
+.movie2-card-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+
+  color: #080e17;
+}
+.movie2-card-info h3 {
+  margin-bottom: 3%;
+}
+/* 
+ *
+ * 
+ *
+ * PAGINA SALAS V1 CSS
+ * 
+ * 
+ */
+.container-sect {
+  width: 60%;
+  display: flex;
+  margin: 3% 3% 0 10%;
+}
+.container-sect.sala {
+  margin-left: 10%;
+}
+
+.card.sala {
+  width: 80%;
+}
+.card-info.sala {
+  padding: 3%;
+  width: 100%;
+}
+.card-info.sala img {
+  width: 250px;
+  height: auto;
+  border-radius: 5px;
+}
+.card-info.sala h2 {
+  font-size: 2rem;
+  margin-bottom: 1%;
+}
+.card-info.sala h3 {
+  font-weight: 500;
+  margin-bottom: 3%;
+}
+.card-info.sala h4 {
+  font-weight: 400;
+}
+
+.all-sala-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3%;
+  margin-top: 1%;
+}
+.card-sala {
+  text-align: center;
+}
+
+/* 
+ *
+ * 
+ *
+ * PAGINA BOLETOS CSS
+ * 
+ * 
+ */
+.card-info.movie.boleto h2 {
+  font-size: 2.5rem;
+}
+.card-info.movie.boleto h3 {
+  margin: 2% 0;
+}
+.card-info.movie.boleto h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card-info.movie.boleto button {
+  width: 20%;
+}
+
+/* 
+ *
+ * 
+ *
+ * PAGINA ASIENTOS CSS
+ * 
+ * 
+ */
+.card-info.form h4 {
+  margin: 0 1%;
+  font-size: 1rem;
+  color: #444444;
+}
+.asiento-disp {
+  fill: #0196d5;
+}
+.asiento-ocup {
+  fill: #d94e4e;
+}
+.asiento-contexto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.asiento-seleccion {
+  display: flex;
+  justify-content: center;
+}
+.asiento-seleccion img,
+.asiento-contexto img {
+  width: 40px;
+}
+
+/* Modificar estilo para el botón de asiento */
+.asiento-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.asiento-button img {
+  display: block;
+}
+.asiento-button:hover {
+  background-color: rgb(146, 146, 146);
+}
+/* 
+ *
+ * 
+ *
+ * PAGINA CLIENTE_EXISTE CSS
+ * 
+ * 
+ */
+
+.card-info.form.cliente_ex,
+.card.form.cliente_ex {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.card.form.cliente_ex {
+  flex-direction: column;
+}
+.card.form.cliente_ex h3 {
+  margin-top: 5%;
+}
+.card-info.form.cliente_ex {
+  gap: 5%;
+}
+
+/* 
+ *
+ * 
+ *
+ * PAGINA FACTURA CSS
+ * 
+ * 
+ */
+.cards.factura {
+  margin: 0;
+  padding: 0;
+}
+.card.form.factura {
+  margin: 2%;
+}
+.card-info.form h2 {
+  margin-bottom: 1%;
+}
+.factura-cliente-info {
+  margin-top: 4%;
+}
+
+/*--------------------LETRAS DE LOGIN----------*/
+
+@keyframes blink {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+
+.log_z1 {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 450;
+  color: #ce2020;
+  text-decoration: none;
+  justify-content: center;
+}
+.blink {
+  animation: blink 1.8s infinite;
+}
+/*--------------------LETRAS DE LOGIN----------*/
+/*--------------------RESERVAR CLIENTE JSP----------*/
+/*--------------------RESERVAR CLIENTE JSP----------*/
+/*--------------------RESERVAR CLIENTE JSP----------*/
+.card-info.form p {
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #444444;
+}
+
+.imagen_centro {
+	margin-top:30px;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: 100%;
+  text-align: center; /* Alinea el texto al centro */
+}
+
+.imagen_centro img {
+  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+  height: auto; /* Para mantener la proporción de la imagen */
+}
+#log_foot {
+  justify-content: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#log_foot a {
+  color: #d9d9d9;
+  font-weight: 200;
+  margin-top:20px;
+  margin-bottom:40px;
+}
+#log_foot h4 {
+  color: #d9d9d9;
+  font-weight: 200;
+}
+
+
+/*CONSULTAR BOLETOOOOOO*/
+
+
+client-info {
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  margin: 10px 0px;
+  justify-content: center;
+  padding-left: 3%;
+}
+
+.modificarhead {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+#admin-login-bg2 {
+  background-image: url("../img/4-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#admin-login-bg2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}  
+.search-container {
+  padding-top: 2.5%;
+  padding-left: 3%;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+.search-form {
+  display: flex;
+}
+
+.search-container input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+  width: 500px;
+}
+
+.search-container button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #0000ff;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.search-container button:hover {
+  background-color: #9393ff;
+}
+
+#mod_h1 {
+  padding: 1%;
+    padding-left: 1%;
+  padding-left: 30%;
+  font-size: 3rem;
+  color: #d9d9d9;
+}
+.seccion-modificar {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 3%;
+  padding-right: 3%;
+  height: 70%;
+  justify-content: center;
+  align-items: center;
+}
+.client-info {
+  background-color: #ffffff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  margin: 10px 0px;
+  justify-content: center;
+  padding-left: 3%;
+}
+.client-info table {
+  /*! border-top: none; */
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  justify-content: space-around;
+}
+.client-info th {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 30px;
+  padding-left: 60px;
+  font-size: 13px;
+  text-align: center;
+  border: 1px solid #000000;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-width: 1%;
+}
+
+.client-info td {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 30px;
+  padding-left: 60px;
+  font-size: 13px;
+  text-align: center;
+  border: 1px solid #000000;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-width: 1%;
+}
+#thead {
+  font-size: 20px;
+}
+
+.main1 {
+  flex: 1;
+  margin-bottom: 30%;
+}
+
+/*----redes sociales-----*/
+.redes{
+	display: flex;
+}
+
+#search1 {
+  display: flex;
+  color: #fff;
+  font-size: 2rem;
+  align-items: center;
+  text-decoration: none;
+  padding-left: 15px;
+  
+}
