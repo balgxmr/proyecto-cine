@@ -1,3 +1,4 @@
+/* Importamos la fuente Inter de Google */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 * {
@@ -16,7 +17,7 @@ body {
 }
 
 /* CSS General */
-
+/* Estilo para el header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -64,7 +65,19 @@ body {
   font-weight: 600;
   color: #c5c5d9;
 }
+.redes {
+  display: flex;
+}
+.redes a {
+  display: flex;
+  color: #fff;
+  font-size: 2rem;
+  align-items: center;
+  text-decoration: none;
+  padding-left: 15px;
+}
 
+/* Estilo para el footer */
 #footer {
   display: flex;
   justify-content: center;
@@ -85,6 +98,7 @@ body {
   font-weight: bold;
   transition: transform 0.5s ease, color 0.5s ease, font-size 0.5s ease;
 }
+/* Agregar estilos a los links del footer */
 #footer-links {
   display: flex;
   gap: 30%;
@@ -111,7 +125,7 @@ body {
   color: #999;
 }
 
-/* Agregar estilo al botón */
+/* Agregar estilo a los botones */
 button {
   background-color: blue;
   color: white;
@@ -142,51 +156,19 @@ button:hover {
 .card img {
   border-radius: 10px 0 0 10px;
 }
-
 .card-info {
   color: #03366b;
   padding: 15% 2%;
   text-align: start;
 }
 
-.card-info1 {
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
-}
-.card-info1 h2 {
-  margin: 0;
-  font-size: 28px;
-}
-
-.card-info1 .cedula {
-  margin: 8px 0;
-  font-size: 18px;
-}
-
-.card-info1 .carrera {
-  margin: 0;
-  font-size: 16px;
-  opacity: 0.8;
-  letter-spacing: 0.25em;
-  font-weight: 700;
-}
-
-.card-info1 h3 {
-  margin: 15px 0 5px 0;
-  font-size: 18px;
-}
-
-.card-info1 .description {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.4;
-}
+/* Estilo para la linea divisora */
 .divisor {
   margin: auto;
   width: 80%;
 }
 
+/* Estilo para los dropdown menu */
 .select-container {
   display: flex;
   justify-content: center;
@@ -204,7 +186,7 @@ button:hover {
   font-size: 20px;
   border-radius: 5px;
 }
-.select-container .icon-container {
+.select-container.icon-container {
   width: 50px;
   height: 100%;
   position: absolute;
@@ -215,7 +197,17 @@ button:hover {
 }
 /* FIN: CSS General */
 
-/* Seccion Home */
+/* 
+ *
+ * 
+ *
+ * PAGINA HOME CSS
+ * 
+ * 
+ */
+
+/* Sección Principal */
+/* CSS para sección principal del home - contiene info de nuestro cine */
 .home-info {
   background-image: url("img/4-4.jpg");
   background-size: cover;
@@ -231,18 +223,16 @@ button:hover {
 .home-info p {
   margin: 1% 0 0 40%;
 }
-
+/* Alinear la información */
 .overlay {
   padding: 10rem;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.75); //* Agrega opacidad al fondo, 0.7 = 70%, en negro */
 }
-
 .overlay p {
   margin-bottom: 2%;
 }
 
-/* Seccion cartelera */
-
+/* Seccion Cartelera */
 .cartelera {
   margin: 2% 3%;
 }
@@ -262,13 +252,12 @@ button:hover {
   display: flex;
   justify-content: space-around;
   position: relative;
-  flex-wrap: wrap;
 }
 .box {
   display: flex;
   flex-direction: column;
   align-self: flex-end;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease; /* Agrega transición con intensidad "ease" de 0.3 segundos */
 }
 .box a {
   text-decoration: none;
@@ -295,8 +284,7 @@ button:hover {
   border-radius: 0 0 10px 10px;
 }
 
-/* cards para noticias */
-
+/* Cards para noticias */
 #new-sect-header {
   font-size: 2rem;
   color: #fff;
@@ -307,17 +295,19 @@ button:hover {
   align-items: center;
   flex-direction: column;
 }
-
 .card.new {
   width: 75%;
 }
-
-.card.new img {
+.card.new img,
+.card.new iframe {
   border-radius: 4px 0 0 4px;
   width: 400px;
   height: auto;
 }
-
+.card.new iframe {
+  width: 805px;
+  height: auto;
+}
 .card.new button {
   color: #00026c;
   background-color: #ffffff00;
@@ -328,18 +318,15 @@ button:hover {
   transition: 0.3s;
   font-weight: 400;
 }
-
 .card.new button:hover {
   font-weight: bold;
   background-color: #cacaca;
   padding: 10px 70px;
 }
-
 .card-info.new {
   padding: 2% 5%;
   margin: 1%;
 }
-
 .card-info.new h3 {
   margin: 1.3% 0 2% 0;
   font-size: 1rem;
@@ -356,21 +343,29 @@ button:hover {
  * 
  * 
  */
-.card-info .cedula {
-  margin: 8px 0;
-  font-size: 18px;
+.card-info.equipo {
+  padding: 0;
+  margin: 4% 5%;
 }
-.card-info .carrera {
-  margin: 0;
-  font-size: 16px;
-  opacity: 0.8;
-  letter-spacing: 0.25em;
-  font-weight: 700;
+.cards.equipo img {
+  width: 600px;
+  height: auto;
 }
-.card-info .description {
+.description {
+  padding-top: 1%;
   margin: 0;
   font-size: 14px;
   line-height: 1.4;
+}
+.cedula {
+  margin: 8px 0;
+  font-size: 18px;
+}
+.carrera {
+  margin: 1% 0;
+  font-size: 16px;
+  opacity: 0.8;
+  font-weight: 600;
 }
 
 /* 
@@ -382,24 +377,24 @@ button:hover {
  * 
  */
 
-/* Fondo con bg image y con opacity */
+/* Fondo utilizando bg-image */
 #admin-login-bg {
   background-image: url("img/4-4.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 #admin-login-bg::before {
-  content: "";
-  position: absolute;
+  content: ""; /* Crea contenido vacío en el pseudo-elemento ::before */
+  position: absolute; /* Posiciona el pseudo-elemento de forma absoluta dentro de 'admin-login-bg' */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.7); /* Agrega opacidad al fondo, 0.7 = 70%, en negro */
+  z-index: -1; /* Coloca el pseudo-elemento detrás del contenido principal  */
 }
 
-/* formulario */
+/* Cards para el formulario */
 .card.form {
   margin-top: 5%;
   margin-bottom: auto;
@@ -437,18 +432,48 @@ button:hover {
   margin-top: 5px;
   border: 1px solid #8d8d8d;
   border-radius: 4px;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho y alto del campo de entrada */
   transition: border-color 0.3s;
 }
+/* Estilo para el campo de entrada cuando está enfocado (cuando el usuario hace clic en él o lo selecciona) */
 .form-input:focus {
   border-color: #007bff;
   outline: none;
 }
+/* Estilo para el texto del placeholder en el campo de entrada */
 .form-input::placeholder {
   color: #999;
 }
+/* Estilo para todos los campos de entrada excepto el último */
 .form-input:not(:last-child) {
   margin-bottom: 20px;
+}
+
+/* Letras del Login */
+/* Definición de la animación 'blink' */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.log_z1 {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 450;
+  color: #ce2020;
+  text-decoration: none;
+  justify-content: center;
+}
+/* Aplica la animación 'blink' a un elemento con la clase 'blinking' */
+.blink {
+  animation: blink 1.8s infinite;
 }
 
 /* 
@@ -469,6 +494,7 @@ button:hover {
   color: #fff;
 }
 
+/* Cards para las peliculas */
 .cards.movies {
   display: flex;
   flex-direction: column;
@@ -519,6 +545,7 @@ button:hover {
   margin: 3% 0;
   justify-content: center;
 }
+
 /* 
  *
  * 
@@ -539,7 +566,6 @@ button:hover {
   flex-direction: column;
   text-align: center;
   padding: 10px;
-
   color: #080e17;
 }
 .movie2-card-info h3 {
@@ -563,6 +589,7 @@ button:hover {
   margin-left: 10%;
 }
 
+/* Cards para mostrar las salas */
 .card.sala {
   width: 80%;
 }
@@ -606,6 +633,7 @@ button:hover {
  * 
  * 
  */
+/* CSS Cards para la info de los boleto */
 .card-info.movie.boleto h2 {
   font-size: 2.5rem;
 }
@@ -633,9 +661,11 @@ button:hover {
   font-size: 1rem;
   color: #444444;
 }
+/* Estilo para cuando el asiento está disponible */
 .asiento-disp {
   fill: #0196d5;
 }
+/* Estilo para cuando el asiento está ocupado */
 .asiento-ocup {
   fill: #d94e4e;
 }
@@ -666,6 +696,7 @@ button:hover {
 .asiento-button:hover {
   background-color: rgb(146, 146, 146);
 }
+
 /* 
  *
  * 
@@ -674,7 +705,6 @@ button:hover {
  * 
  * 
  */
-
 .card-info.form.cliente_ex,
 .card.form.cliente_ex {
   display: flex;
@@ -713,54 +743,31 @@ button:hover {
   margin-top: 4%;
 }
 
-/*--------------------LETRAS DE LOGIN----------*/
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.log_z1 {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  font-weight: 450;
-  color: #ce2020;
-  text-decoration: none;
-  justify-content: center;
-}
-.blink {
-  animation: blink 1.8s infinite;
-}
-/*--------------------LETRAS DE LOGIN----------*/
-/*--------------------RESERVAR CLIENTE JSP----------*/
-/*--------------------RESERVAR CLIENTE JSP----------*/
-/*--------------------RESERVAR CLIENTE JSP----------*/
+/* 
+ *
+ * 
+ *
+ * PAGINA RESERVAR CLIENTE CSS
+ * 
+ * 
+ */
 .card-info.form p {
   margin-top: 12px;
   font-weight: 700;
   font-size: 1.2rem;
   color: #444444;
 }
-
 .imagen_centro {
   margin-top: 30px;
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  text-align: center; /* Alinea el texto al centro */
+  text-align: center;
 }
-
 .imagen_centro img {
-  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
-  height: auto; /* Para mantener la proporción de la imagen */
+  max-width: 100%;
+  height: auto;
 }
 #log_foot {
   justify-content: center;
@@ -769,7 +776,6 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
-
 #log_foot a {
   color: #d9d9d9;
   font-weight: 200;
@@ -781,8 +787,14 @@ button:hover {
   font-weight: 200;
 }
 
-/*CONSULTAR BOLETOOOOOO*/
-
+/* 
+ *
+ * 
+ *
+ * PAGINA CONSULTAR BOLETO CSS
+ * 
+ * 
+ */
 client-info {
   background-color: #d9d9d9;
   border-radius: 10px;
@@ -791,12 +803,10 @@ client-info {
   justify-content: center;
   padding-left: 3%;
 }
-
 .modificarhead {
   display: flex;
   justify-content: space-around;
 }
-
 #admin-login-bg2 {
   background-image: url("../img/4-4.jpg");
   background-repeat: no-repeat;
@@ -805,7 +815,6 @@ client-info {
   flex-direction: column;
   min-height: 100%;
 }
-
 #admin-login-bg2::before {
   content: "";
   position: absolute;
@@ -813,7 +822,7 @@ client-info {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7); /* Agrega opacidad al fondo, 0.7 = 70%, en negro */
   z-index: -1;
 }
 .search-container {
@@ -826,6 +835,7 @@ client-info {
   display: flex;
 }
 
+/* Selecciona el campo de entrada de texto dentro del contenedor con clase 'search-container' */
 .search-container input[type="text"] {
   padding: 10px;
   font-size: 16px;
@@ -833,7 +843,6 @@ client-info {
   border-radius: 0 4px 4px 0;
   width: 500px;
 }
-
 .search-container button {
   padding: 10px;
   border: 1px solid #ccc;
@@ -842,12 +851,10 @@ client-info {
   cursor: pointer;
   border-radius: 4px 0 0 4px;
 }
-
 .search-icon {
   width: 20px;
   height: 20px;
 }
-
 .search-container button:hover {
   background-color: #9393ff;
 }
@@ -896,7 +903,6 @@ client-info {
   border-left: none;
   border-width: 1%;
 }
-
 .client-info td {
   padding-bottom: 15px;
   padding-top: 15px;
@@ -913,22 +919,7 @@ client-info {
 #thead {
   font-size: 20px;
 }
-
 .main1 {
   flex: 1;
   margin-bottom: 30%;
-}
-
-/*----redes sociales-----*/
-.redes {
-  display: flex;
-}
-
-#search1 {
-  display: flex;
-  color: #fff;
-  font-size: 2rem;
-  align-items: center;
-  text-decoration: none;
-  padding-left: 15px;
 }

@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -12,9 +11,9 @@
     <script src="https://kit.fontawesome.com/5ddbd215bf.js" crossorigin="anonymous"></script>
 
     <title>Cliente-existente</title>
-</head>
-<body id="admin-login-bg">
-     <header class="header">
+  </head>
+  <body id="admin-login-bg">
+    <header class="header">
       <div id="header-title">
         <img src="img/LOGO_WHITE_TRANSPARENTE.png" alt="" />
         <a href="Home.html"><h1>INESTELAR</h1></a>
@@ -22,37 +21,39 @@
 
       <div class="header-info">
         <a href="Consulta-pelicula.jsp"><h2>Películas</h2></a>
-	        <a href="Consulta-sala.jsp"><h2>Salas</h2></a>
-	        <a href="Consulta-boleto.jsp"><h2>Boletos</h2></a>
-	        <a href="Consulta-asientos.jsp"><h2>Asientos</h2></a>
-	        <a href="Consulta-horario.jsp"><h2>Horarios</h2></a>
-	        <a href="Cliente-existe-pregunta.html"><h2>Reservar</h2></a>
-
+        <a href="Consulta-sala.jsp"><h2>Salas</h2></a>
+        <a href="Consulta-boleto.jsp"><h2>Boletos</h2></a>
+        <a href="Consulta-asientos.jsp"><h2>Asientos</h2></a>
+        <a href="Consulta-horario.jsp"><h2>Horarios</h2></a>
+        <a href="Cliente-existe-pregunta.html"><h2>Reservar</h2></a>
       </div>
 
       <div class="redes">
-
-      <a href="https://www.google.com/" id="search1"><i class="fa-solid fa-magnifying-glass"></i></a>
-      <a href="https://www.instagram.com/" id="search1"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.facebook.com/?locale=es_LA" id="search1"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.google.com/"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/?locale=es_LA"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </header>
-    <section class="cards">
-        <form action="Pelicula.jsp" method="post" class="card form">
-            <div class="card-info form">
-                <h2>Cliente Existente</h2>
-                <h3>Ingrese su cedula.</h3>
 
-                <h4 class="card form-field">Cedula</h4>
-                <input type="text" name="cedula" class="form-input" placeholder="Ingresa tu cedula" required />
-                <button type="submit" name="login" value="login">Iniciar Sesion</button>
+    <section class="cards">
+      <form action="Pelicula.jsp" method="post" class="card form">
+        <div class="card-info form">
+          <h2>Cliente Existente</h2>
+          <h3>Ingrese su cedula.</h3>
+
+          <h4 class="card form-field">Cedula</h4>
+          <input type="text" name="cedula" class="form-input" placeholder="Ingresa tu cedula" required />
+          <button type="submit" name="login" value="login">Iniciar Sesion</button>
         </div>
-        </form>
-        </section>
-    <footer id="log_foot">
-	    <h4 class="log_a">No esta registrado el cliente?</h4>
-	    <a class="log_a" href="Registrar-cliente-formulario.html" target="_blank">Presione aqui</a>
-    </footer>
+      </form>
+    </section>
+
+    <!-- Ayuda para cuando el cliente no está registrado -->
+    <div id="log_foot">
+      <h4 class="log_a">No esta registrado el cliente?</h4>
+      <a class="log_a" href="Registrar-cliente-formulario.html" target="_blank">Presione aqui</a>
+    </div>
+
     <footer id="footer">
       <section id="footer-links">
         <a href="Home.html">
@@ -79,6 +80,5 @@
 
       <h5><b>CINESTELAR.</b> Todos los derechos reservados 2024.</h5>
     </footer>
-
-</body>
+  </body>
 </html>

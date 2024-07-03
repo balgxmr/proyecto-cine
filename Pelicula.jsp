@@ -18,28 +18,26 @@
 	</head>
 	<body>
 		<header class="header">
-	      <div id="header-title">
-	        <img src="img/LOGO_WHITE_TRANSPARENTE.png" alt="" />
-	        <a href="Home.html"><h1>INESTELAR</h1></a>
-	      </div>
-	
-	      <div class="header-info">
-	        <a href="Consulta-pelicula.jsp"><h2>Películas</h2></a>
-		        <a href="Consulta-sala.jsp"><h2>Salas</h2></a>
-		        <a href="Consulta-boleto.jsp"><h2>Boletos</h2></a>
-		        <a href="Consulta-asientos.jsp"><h2>Asientos</h2></a>
-		        <a href="Consulta-horario.jsp"><h2>Horarios</h2></a>
-		        <a href="Cliente-existe-pregunta.html"><h2>Reservar</h2></a>
-	
-	      </div>
-	
-	      <div class="redes">
-	
-	      <a href="https://www.google.com/" id="search1"><i class="fa-solid fa-magnifying-glass"></i></a>
-	      <a href="https://www.instagram.com/" id="search1"><i class="fa-brands fa-instagram"></i></a>
-	      <a href="https://www.facebook.com/?locale=es_LA" id="search1"><i class="fa-brands fa-facebook"></i></a>
-	      </div>
-	    </header>
+      <div id="header-title">
+        <img src="img/LOGO_WHITE_TRANSPARENTE.png" alt="" />
+        <a href="Home.html"><h1>INESTELAR</h1></a>
+      </div>
+
+      <div class="header-info">
+        <a href="Consulta-pelicula.jsp"><h2>Películas</h2></a>
+        <a href="Consulta-sala.jsp"><h2>Salas</h2></a>
+        <a href="Consulta-boleto.jsp"><h2>Boletos</h2></a>
+        <a href="Consulta-asientos.jsp"><h2>Asientos</h2></a>
+        <a href="Consulta-horario.jsp"><h2>Horarios</h2></a>
+        <a href="Cliente-existe-pregunta.html"><h2>Reservar</h2></a>
+      </div>
+
+      <div class="redes">
+        <a href="https://www.google.com/"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/?locale=es_LA"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+    </header>
 		
 		<%-- Inicializar variables de conexion --%>
 	    <% Connection conexion = null; %>
