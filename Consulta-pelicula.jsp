@@ -18,28 +18,28 @@
 	</head>
 	<body>
 		<header class="header">
-      <div id="header-title">
-        <img src="img/LOGO_WHITE_TRANSPARENTE.png" alt="" />
-        <a href="Home.html"><h1>INESTELAR</h1></a>
-      </div>
-
-      <div class="header-info">
-        <a href="Consulta-pelicula.jsp"><h2>Películas</h2></a>
-	        <a href="Consulta-sala.jsp"><h2>Salas</h2></a>
-	        <a href="Consulta-boleto.jsp"><h2>Boletos</h2></a>
-	        <a href="Consulta-asientos.jsp"><h2>Asientos</h2></a>
-	        <a href="Consulta-horario.jsp"><h2>Horarios</h2></a>
-	        <a href="Cliente-existe-pregunta.html"><h2>Reservar</h2></a>
-
-      </div>
-
-      <div class="redes">
-
-      <a href="https://www.google.com/" id="search1"><i class="fa-solid fa-magnifying-glass"></i></a>
-      <a href="https://www.instagram.com/" id="search1"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.facebook.com/?locale=es_LA" id="search1"><i class="fa-brands fa-facebook"></i></a>
-      </div>
-    </header>
+	      <div id="header-title">
+	        <img src="img/LOGO_WHITE_TRANSPARENTE.png" alt="" />
+	        <a href="Home.html"><h1>INESTELAR</h1></a>
+	      </div>
+	
+	      <div class="header-info">
+	        <a href="Consulta-pelicula.jsp"><h2>Películas</h2></a>
+		        <a href="Consulta-sala.jsp"><h2>Salas</h2></a>
+		        <a href="Consulta-boleto.jsp"><h2>Boletos</h2></a>
+		        <a href="Consulta-asientos.jsp"><h2>Asientos</h2></a>
+		        <a href="Consulta-horario.jsp"><h2>Horarios</h2></a>
+		        <a href="Cliente-existe-pregunta.html"><h2>Reservar</h2></a>
+	
+	      </div>
+	
+	      <div class="redes">
+	
+	      <a href="https://www.google.com/" id="search1"><i class="fa-solid fa-magnifying-glass"></i></a>
+	      <a href="https://www.instagram.com/" id="search1"><i class="fa-brands fa-instagram"></i></a>
+	      <a href="https://www.facebook.com/?locale=es_LA" id="search1"><i class="fa-brands fa-facebook"></i></a>
+	      </div>
+	    </header>
 	    
 	    <header class="modificarhead">
 	      <div class="search-container">
@@ -77,76 +77,84 @@
 			<section class="cards movies">
 			
 			<% 
-			    PreparedStatement consulta_pelicula = conexion.prepareStatement("select p.id_pelicula, p.nombre_pelicula, suc.nombre_sucursal,e.id_exhibicion, e.horario, s.id_sala from pelicula p join exhibicion e on p.id_pelicula = e.id_pelicula join sala s on e.id_sala = s.id_sala join sucursal suc on s.id_sucursal = suc.id_sucursal WHERE nombre_pelicula LIKE ? AND ROWNUM = 1");
+			    PreparedStatement consulta_pelicula = conexion.prepareStatement("select p.id_pelicula, p.nombre_pelicula from pelicula p WHERE nombre_pelicula LIKE ? AND ROWNUM = 1");
 				consulta_pelicula.setString(1, "%" + pelicula + "%");
 		        
 		        ResultSet resultado = consulta_pelicula.executeQuery();
-		        
-		        HashMap<Integer, String> lista_nombres = new HashMap<>();
-		        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();
-		        HashMap<Integer, String> lista_horarios = new HashMap<>();
-		        
-		        List<String> lista_pelicula = new ArrayList<>();
-		        while (resultado.next()) {
-		        	 int id_exhibicion = resultado.getInt("id_exhibicion");
-		        	 int id_pelicula = resultado.getInt("id_pelicula");
-	                 String nombre_pelicula = resultado.getString("nombre_pelicula");
-	                 String horario = resultado.getString("horario");
-	                 String nombre_sucursal = resultado.getString("nombre_sucursal");
-	                 int id_sala = resultado.getInt("id_sala");
-	
-	                 if (!lista_nombres.containsKey(id_pelicula)){
-	                     lista_nombres.put(id_pelicula, nombre_pelicula);
-	                 }
-	
-	                 lista_id.computeIfAbsent(id_pelicula, i -> new ArrayList<>()).add(id_exhibicion);
-	
-	                 if (!lista_horarios.containsKey(id_exhibicion)){
-		                 lista_horarios.put(id_exhibicion, horario);
-	                 }
-		        }
-	
-		        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {
-		        	Integer id_pelicula = entry.getKey();
-	                List<Integer> lista_id_exhibicion = entry.getValue();
-	                
-	                String nombre_pelicula = lista_nombres.get(id_pelicula);
-	                
-	                %>
-						<div class="card movie">
-				          <img src="img/imagen_peliculas.jpg" width="250px" height="400px"/>
-				          <div class="card-info movie">
-				            <h2><%= nombre_pelicula%></h2>
-				            <hr />
-				            <h3>Horarios</h3>
-				            <table>
-	    		    <% 
-	    		    
-	                for (Integer id_exhibicion : lista_id_exhibicion){
-	                    String horario = lista_horarios.get(id_exhibicion);
-	
-	                    %>
-			                <tr>
-			                  <td>
-			                  <div >
-	
-			                    <button type="submit" ><%= horario %></button>
-			                   </div>  
-			                  </td>
-			                </tr>
-		 				<%                    
-	                }
+			
+		        if (resultado.next()){
+		        	int id_pelicula = resultado.getInt("id_pelicula");
+		        	String nombre_pelicula = resultado.getString("nombre_pelicula");
 		        	
-	                               		 
-	            	%>
-	             			</table>
-	             	   	   </div>
-			        	</div>                		 
-	             	<%	
-	            }
-        %>
+				    PreparedStatement consulta_pelicula_exibicion = conexion.prepareStatement("select e.id_exhibicion, suc.nombre_sucursal, e.horario, s.id_sala from pelicula p join exhibicion e on p.id_pelicula = e.id_pelicula join sala s on e.id_sala = s.id_sala join sucursal suc on s.id_sucursal = suc.id_sucursal WHERE p.id_pelicula = ? AND TRUNC(e.fecha) = TRUNC(SYSDATE) ORDER BY id_sala, horario");
+				    consulta_pelicula_exibicion.setInt(1, id_pelicula);
+			        
+			        ResultSet resultado_exhibicion = consulta_pelicula_exibicion.executeQuery();
+			        
+			        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();
+			        HashMap<Integer, String> lista_sucursal = new HashMap<>();
+			        HashMap<Integer, String> lista_horarios = new HashMap<>();
+			        
+			        List<String> lista_pelicula = new ArrayList<>();
+			        while (resultado_exhibicion.next()) {
+		                 int id_sala = resultado_exhibicion.getInt("id_sala");
+			        	 int id_exhibicion = resultado_exhibicion.getInt("id_exhibicion");
+		                 String nombre_sucursal = resultado_exhibicion.getString("nombre_sucursal");
+		                 String horario = resultado_exhibicion.getString("horario");
+		
+		                 lista_id.computeIfAbsent(id_sala, i -> new ArrayList<>()).add(id_exhibicion);
+
+		                 if (!lista_sucursal.containsKey(id_sala)){
+		                	 lista_sucursal.put(id_sala, nombre_sucursal);
+		                 }
+		
+		                 if (!lista_horarios.containsKey(id_exhibicion)){
+			                 lista_horarios.put(id_exhibicion, horario);
+		                 }
+			        }
+		
+			        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {
+			        	Integer id_sala = entry.getKey();
+		                List<Integer> lista_id_exhibicion = entry.getValue();
+	                    String nombre_sucursal = lista_sucursal.get(id_sala);
+		                
+		                %>
+							<div class="card movie">
+					          <img src="img/imagen_peliculas.jpg" width="250px" height="400px"/>
+					          <div class="card-info movie">
+					            <h2><%= nombre_pelicula%></h2>
+					            <h2><%= id_sala%></h2>
+					            <h2><%= nombre_sucursal%></h2>
+					            <hr />
+					            <h3>Horarios</h3>
+					            <table>
+		    		    <% 
+		    		    
+		                for (Integer id_exhibicion : lista_id_exhibicion){
+		                    String horario = lista_horarios.get(id_exhibicion);
+		
+		                    %>
+				                <tr>
+				                  <td>
+				                  <div >
+				                    <button><%= horario %></button>
+				                   </div>  
+				                  </td>
+				                </tr>
+			 				<%                    
+		                }
+			        	
+		                               		 
+		            	%>
+		             			</table>
+		             	   	   </div>
+				        	</div>                		 
+		             	<%	
+		            }
+		        }
+            %>
        
-	</section>
+	        </section>
 		
 	<%	
 		
@@ -167,6 +175,13 @@
           <div class="footer-link-box">
             <i class="fa-solid fa-user"></i>
             <h3>SOBRE NOSOTROS</h3>
+          </div>
+        </a>
+
+        <a href="Usuario-login.jsp">
+          <div class="footer-link-box">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <h3>CERRAR SESIÓN</h3>
           </div>
         </a>
       </section>

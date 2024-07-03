@@ -20,12 +20,6 @@
         <img src="img/LOGO_WHITE_TRANSPARENTE.png" alt="" />
         <a href="Home.html"><h1>INESTELAR</h1></a>
       </div>
-      <div class="redes">
-
-      <a href="https://www.google.com/" id="search1"><i class="fa-solid fa-magnifying-glass"></i></a>
-      <a href="https://www.instagram.com/" id="search1"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.facebook.com/?locale=es_LA" id="search1"><i class="fa-brands fa-facebook"></i></a>
-      </div>
     </header>
 
     <section class="cards">

@@ -142,20 +142,46 @@ button:hover {
 .card img {
   border-radius: 10px 0 0 10px;
 }
+
 .card-info {
+  color: #03366b;
+  padding: 15% 2%;
+  text-align: start;
+}
+
+.card-info1 {
   padding-left: 20px;
   display: flex;
   flex-direction: column;
 }
-.card-info h2 {
+.card-info1 h2 {
   margin: 0;
   font-size: 28px;
 }
-.card-info h3 {
+
+.card-info1 .cedula {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.card-info1 .carrera {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.8;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+}
+
+.card-info1 h3 {
   margin: 15px 0 5px 0;
   font-size: 18px;
 }
 
+.card-info1 .description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
 .divisor {
   margin: auto;
   width: 80%;

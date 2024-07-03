@@ -164,6 +164,13 @@
             <h3>SOBRE NOSOTROS</h3>
           </div>
         </a>
+
+        <a href="Usuario-login.jsp">
+          <div class="footer-link-box">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <h3>CERRAR SESIÓN</h3>
+          </div>
+        </a>
       </section>
 
       <h5><b>CINESTELAR.</b> Todos los derechos reservados 2024.</h5>

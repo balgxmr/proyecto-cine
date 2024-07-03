@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <header class="header">
+   <header class="header">
       <div id="header-title">
         <img src="img/LOGO_WHITE_TRANSPARENTE.png" alt="" />
         <a href="Home.html"><h1>INESTELAR</h1></a>
@@ -138,6 +138,13 @@
           <div class="footer-link-box">
             <i class="fa-solid fa-user"></i>
             <h3>SOBRE NOSOTROS</h3>
+          </div>
+        </a>
+
+        <a href="Usuario-login.jsp">
+          <div class="footer-link-box">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <h3>CERRAR SESIÓN</h3>
           </div>
         </a>
       </section>
