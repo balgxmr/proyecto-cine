@@ -76,6 +76,7 @@
                    
 
            %>
+            <!-- imprimir valores que se traen desde la consulta -->
                    <option value="<%= horario_pelicula %>"><%= horario_pelicula %></option>
                    
            <%                        
@@ -94,60 +95,40 @@
 		
 		<%
 		
-		if (horario != ""){
+		if (horario != ""){//verificar si ya el usuario ingreso el valor
 		
 			
 		%>
 			<section class="cards movies">
 			
 			<% 
-			    PreparedStatement consulta = conexion.prepareStatement("Select * from sala s join exhibicion e on s.id_sala = e.id_sala join pelicula p on e.id_pelicula = p.id_pelicula WHERE TO_CHAR(horario, 'HH:MI PM') = ? AND TRUNC(e.fecha) = TRUNC(SYSDATE) ORDER BY p.id_pelicula, e.horario");
+			    PreparedStatement consulta = conexion.prepareStatement("Select * from sala s join exhibicion e on s.id_sala = e.id_sala join pelicula p on e.id_pelicula = p.id_pelicula join sucursal suc on s.id_sucursal = suc.id_sucursal WHERE TO_CHAR(horario, 'HH:MI PM') = ? AND TRUNC(e.fecha) = TRUNC(SYSDATE) ORDER BY s.id_sala");
 				consulta.setString(1, horario);
 		        
 		        ResultSet resultado_horario = consulta.executeQuery();
 		        
-		        HashMap<Integer, String> lista_nombres = new HashMap<>();
-		        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();
-		        HashMap<Integer, String> lista_horarios = new HashMap<>();
-		        
-		        List<String> lista_pelicula = new ArrayList<>();
 		        while (resultado_horario.next()) {
-	                 int id_pelicula = resultado_horario.getInt("id_pelicula");
-	                 int id_exhibicion = resultado_horario.getInt("id_exhibicion");
+						//tomar los valores de la consulta e imprimirlos
 	                 String nombre_pelicula = resultado_horario.getString("nombre_pelicula");
-	
-	                 if (!lista_nombres.containsKey(id_pelicula)){
-	                     lista_nombres.put(id_pelicula, nombre_pelicula);
-	                 }
-	
-	                 lista_id.computeIfAbsent(id_pelicula, i -> new ArrayList<>()).add(id_exhibicion);
-	
-	                 if (!lista_horarios.containsKey(id_exhibicion)){
-		                 lista_horarios.put(id_exhibicion, horario);
-	                 }
-		        }
-	
-		        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {
-		        	Integer id_pelicula = entry.getKey();
-	                List<Integer> lista_id_exhibicion = entry.getValue();
-	                
-	                String nombre_pelicula = lista_nombres.get(id_pelicula);
-	                
-	                %>
+	                 int sala = resultado_horario.getInt("id_sala");
+	                 String nombre_sucursal = resultado_horario.getString("nombre_sucursal");
+
+	                 %>
 						<div class="card movie">
 				          <img src="img/imagen_peliculas.jpg" width="250px" height="400px"/>
 				          <div class="card-info movie">
+				            <h2><%= nombre_sucursal%></h2>
+				            <h2>SALA: <%= sala%></h2>
 				            <h2><%= nombre_pelicula%></h2>
 				            <hr />
-				            <h3>Horarios</h3>
-
 	             	   	   </div>
 			        	</div>                		 
-	             	<%	
-	            }
-        %>
+	             	<%		                 
+		        }
+	
+          %>
        
-	</section>
+	      </section>
 		
 	<%	
 		

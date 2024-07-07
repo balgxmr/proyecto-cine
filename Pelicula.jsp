@@ -66,7 +66,7 @@
 		        stmt.setString(1, cedula);
 		        ResultSet rs = stmt.executeQuery();
 		       
-		        if (!rs.next()) {
+		        if (!rs.next()) {//si el cliente no existe se regresa a la pagina para que ponga sus datos bien
 		            // Redirigir a la página de inicio si el login es correcto
 		            response.sendRedirect("Cliente-existente.html"); 
 		        }else{
@@ -76,7 +76,7 @@
 	    %>
 	    
 	    <% 
-	    if(cliente != null){
+	    if(cliente != null){//significa que el cliente ya existe
 	    %>
 	    
 			<section>
@@ -96,6 +96,7 @@
 		                   int id_sucursal = resultado_sucursal.getInt("id_sucursal");
 		                   String nombre = resultado_sucursal.getString("nombre_sucursal");
 		           %>
+		           <!-- Imprimir las sucursales que devuelve la consulta -->
 		                   <option value="<%= id_sucursal %>"><%= nombre %></option>
 		                   
 		           <%                        
@@ -106,6 +107,7 @@
 		            <i class="fa-solid fa-caret-down"></i>
 		          </div>
 		        </div>
+		        <!-- Se envia el id_cliente, necesitamos este valor en todo el flujo para insertar al final -->
 		        <input type="hidden" name="id_cliente" value="<%= cliente %>"></input>
 		        <button type="submit">Seleccionar</button>
 		      </form>
@@ -116,11 +118,6 @@
 			}
 	    %>
 	    
-		<%
-		
-		if (true){
-		
-		%>
 		    <section class="cards movies">
 	
 		    <% 
@@ -129,32 +126,31 @@
 		        consulta_pelicula.setString(1, sucursal);
 		        
 		        ResultSet resultado = consulta_pelicula.executeQuery();
+		        //Hashmap es un mapa que contiene un key y un valor
+		        HashMap<Integer, String> lista_nombres = new HashMap<>();//creando un mapa para los nombres de las pelicualas
+		        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();//funciona para agrupar por el id de pelicula
+		        HashMap<Integer, String> lista_horarios = new HashMap<>();//creando un mapa para los horarios
 		        
-		        HashMap<Integer, String> lista_nombres = new HashMap<>();
-		        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();
-		        HashMap<Integer, String> lista_horarios = new HashMap<>();
-		        
-		        List<String> lista_pelicula = new ArrayList<>();
-		        while (resultado.next()) {
+		        while (resultado.next()) {//guardo los valores del resultado de la consulta
 	                 int id_pelicula = resultado.getInt("id_pelicula");
 	                 int id_exhibicion = resultado.getInt("id_exhibicion");
 	                 String nombre_pelicula = resultado.getString("nombre_pelicula");
 	                 String horario = resultado.getString("horario");
 	
-	                 if (!lista_nombres.containsKey(id_pelicula)){
+	                 if (!lista_nombres.containsKey(id_pelicula)){//si la lista de nombres no contiene el key(id_pelicula) entonces lo inserto en el mapa
 	                     lista_nombres.put(id_pelicula, nombre_pelicula);
 	                 }
 	
-	                 lista_id.computeIfAbsent(id_pelicula, i -> new ArrayList<>()).add(id_exhibicion);
+	                 lista_id.computeIfAbsent(id_pelicula, i -> new ArrayList<>()).add(id_exhibicion);//metodo para verificar si esta ausente el key del mapa crea la lista y si no esta ausente solamente adiciona el valor
 	
-	                 if (!lista_horarios.containsKey(id_exhibicion)){
+	                 if (!lista_horarios.containsKey(id_exhibicion)){//verifica si la lista de horarios no contiene el key (id_horarios) entonces lo inserto
 		                 lista_horarios.put(id_exhibicion, horario);
 	                 }
 		        }
 	
-		        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {
-		        	Integer id_pelicula = entry.getKey();
-	                List<Integer> lista_id_exhibicion = entry.getValue();
+		        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {//entrySet me devuleve el mapa para iterar, lo itero y cada elemento del mapa tiene una estructura (KEY), value
+		        	Integer id_pelicula = entry.getKey();//tomo el valor de la llave
+	                List<Integer> lista_id_exhibicion = entry.getValue();//tomo el valor en la posicion de esa llave, getvalue me devuelve la lista
 	                
 	                String nombre_pelicula = lista_nombres.get(id_pelicula);
 	                
@@ -168,13 +164,14 @@
 				            <table>
 	    		    <% 
 	    		    
-	                for (Integer id_exhibicion : lista_id_exhibicion){
-	                    String horario = lista_horarios.get(id_exhibicion);
+	                for (Integer id_exhibicion : lista_id_exhibicion){//itero sobre la lista que me devolvio getvalue
+	                    String horario = lista_horarios.get(id_exhibicion);//tomo los horarios
 	
 	                    %>
 			                <tr>
 			                  <td>
 			                  <form action="Boleto.jsp" method="GET">
+			                  <!-- Se envian los valores para la siguiente pagina  -->
 			                  	<input type="hidden" name="id_cliente" value="<%= cliente %>"></input>
 			                  	<input type="hidden" name="id_exhibicion" value="<%= id_exhibicion %>"></input>
 			                    <button type="submit" ><%= horario %></button>
@@ -194,12 +191,6 @@
 	        %>
 	        
 			</section>
-		
-		<%	
-		
-		}
-		
-		%>
 
 	<footer id="footer">
       <section id="footer-links">

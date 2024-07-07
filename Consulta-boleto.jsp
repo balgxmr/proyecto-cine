@@ -69,7 +69,7 @@
                 String cedula = request.getParameter("cedula");
                 String errorMessage = "";
                
-                if (cedula != null && !cedula.isEmpty()) {
+                if (cedula != null && !cedula.isEmpty()) {//validar que el usuario ha ingresado algun valor
                     Connection conexion = null;
                     PreparedStatement stmt = null;
                     ResultSet rs = null;
@@ -95,13 +95,14 @@
                        	    int cantidad_adultos = rs.getInt("cantidad_adultos");
                        	    int cantidad_terceraedad = rs.getInt("cantidad_terceraedad");
  
+                       	    //calcular el total para imprimir
                        	    int cantidad_total = cantidad_ninos + cantidad_adultos + cantidad_terceraedad;
                        	    
                        	    double precio_ninos = rs.getInt("importe_ninos");
                        	    double precio_adultos = rs.getInt("importe_adultos");
                        	    double precio_terceraedad = rs.getInt("importe_terceraedad");
                        	    double total_importe = (precio_ninos*cantidad_ninos) + (precio_adultos*cantidad_adultos) + (precio_terceraedad*cantidad_terceraedad);
-                       	    
+                       	    //validar que el boleto existe
                        	    if (id_boleto != 0){
                        	    	
                        	    	%>

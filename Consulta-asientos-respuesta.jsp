@@ -89,31 +89,31 @@
 	        
 	        ResultSet resultado = consulta_sucursal.executeQuery();
 	        
-	        HashMap<String, List<Integer>> lista_asientos = new HashMap<>();
-	        HashMap<Integer, Boolean> lista_reserva = new HashMap<>();
+	        HashMap<String, List<Integer>> lista_asientos = new HashMap<>();//funciona para agrupar por el id de asientos
+	        HashMap<Integer, Boolean> lista_reserva = new HashMap<>();//creando un mapa para la lista de reservas
 
-	        while (resultado.next()) {
+	        while (resultado.next()) {//guardo los valores del resultado de la consulta
 	        	String fila = resultado.getString("fila");
 	        	int id_asiento = resultado.getInt("id_asiento");
 				int reserva = resultado.getInt("reserva");
 				
-                lista_asientos.computeIfAbsent(fila, i -> new ArrayList<>()).add(id_asiento);
+                lista_asientos.computeIfAbsent(fila, i -> new ArrayList<>()).add(id_asiento);//metodo para verificar si esta ausente el key del mapa crea la lista y si no esta ausente solamente adiciona el valor
                 
-                if (!lista_reserva.containsKey(id_asiento)){
+                if (!lista_reserva.containsKey(id_asiento)){//si la lista de reservas no contiene el key(id_asiento) entonces lo inserto en el mapa
                     lista_reserva.put(id_asiento, reserva != 0);
                 }
 	        }
 	        
-	        for (Map.Entry<String, List<Integer>> entry : lista_asientos.entrySet()) {
-	        	String fila = entry.getKey();
-                List<Integer> lista_id_asiento = entry.getValue();
+	        for (Map.Entry<String, List<Integer>> entry : lista_asientos.entrySet()) {//entrySet me devuleve el mapa para iterar, lo itero y cada elemento del mapa tiene una estructura (KEY), value
+	        	String fila = entry.getKey();//tomo el valor de la llave
+                List<Integer> lista_id_asiento = entry.getValue();//tomo el valor en la posicion de esa llave, getvalue me devuelve la lista
                 
                 %>
 					<tr>
     		 	<% 
     		 
-                for (Integer id_asiento : lista_id_asiento){
-                    Boolean reserva_asiento = lista_reserva.get(id_asiento);
+                for (Integer id_asiento : lista_id_asiento){//itero sobre la lista que me devolvio getvalue
+                    Boolean reserva_asiento = lista_reserva.get(id_asiento);//si el asiento existe significa que esta reservado, eso lo guardo en un booleano
 
                 	%>
 						<td>
@@ -122,12 +122,12 @@
 
 
 								<%
-									if(reserva_asiento){
+									if(reserva_asiento){//imprimir el asiento ocupado
 								%>		
 										<img class="asiento-ocup" src="img/chair_ocupado_24dp_FILL0_wght400_GRAD0_opsz24.svg" alt="" />		
 								<%
 									}
-									else{
+									else{//imprimir el asiento desocupado
 								%>		
 										<img class="asiento-disp" src="img/chair_disponible_24dp_FILL0_wght400_GRAD0_opsz24.svg" alt="" />		
 								<%

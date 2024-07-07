@@ -38,7 +38,7 @@
         
     
 
-    <% 
+    <% //tomar los parametros del form que se reenvia a esta misma pagina
         String cedula = request.getParameter("cedula");
         String nombre = request.getParameter("nombre");
         String errorMessage = "";
@@ -52,11 +52,13 @@
                 String dbPassword = "123";
                 Connection conexion = DriverManager.getConnection(jdbcUrl, dbUsername, dbPassword);
                 
+                //consulta a la base de datos
                 PreparedStatement stmt = conexion.prepareStatement("SELECT * FROM empleado WHERE cedula=? AND nombre=?");
                 stmt.setString(1, cedula);
                 stmt.setString(2, nombre);
                 ResultSet rs = stmt.executeQuery();
 
+                //si existe un valor significa que existe en la bd y continua al home
                 if (rs.next()) {
                     // Redirigir a la página de inicio si el login es correcto
                     response.sendRedirect("Home.html");

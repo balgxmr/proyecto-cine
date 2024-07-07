@@ -45,7 +45,7 @@
 	    <% CallableStatement llamada = null; %>
     	
     	<%      
-    		
+    		//tomar los valores del formulario
     			String cliente = request.getParameter("id_cliente");
 		    	String exhibicion = request.getParameter("id_exhibicion");
 		    	
@@ -65,7 +65,7 @@
                
                ResultSet resultado = consulta_sucursal.executeQuery();
                
-               resultado.next();
+               resultado.next();//guardo los valores de la consulta en variables y las imprimo
                String nombre_pelicula = resultado.getString("nombre_pelicula");
                String nombre_sucursal = resultado.getString("nombre_sucursal");
                int numero_sala = resultado.getInt("id_sala");
@@ -97,6 +97,7 @@
             <h3>Digite la cantidad de boletos</h3>
 
             <form action="Asientos.jsp" method="GET">
+            <!-- Se envian valores hidden porque los necesitaremos en las siguientes paginas -->
             	<input type="hidden" name="id_cliente" value="<%= cliente %>"></input>
             	<input type="hidden" name="id_exhibicion" value="<%= exhibicion %>"></input>
             	<input type="hidden" name="asientos" value=""></input>

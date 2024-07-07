@@ -70,6 +70,7 @@
                    int id_sala = resultado.getInt("id_sala");
 
            %>
+           <!-- imprimir los valores de la consulta-->
                    <option value="<%= id_sala %>"><%= nombre_sucursal %> --> SALA: <%= id_sala %></option>
                    
            <%                        

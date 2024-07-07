@@ -68,7 +68,7 @@
 		
 		<%
 		
-		if (pelicula != ""){
+		if (pelicula != ""){//verificar si ya el usuario ingreso el valor
 		
 			
 		%>
@@ -88,32 +88,32 @@
 				    consulta_pelicula_exibicion.setInt(1, id_pelicula);
 			        
 			        ResultSet resultado_exhibicion = consulta_pelicula_exibicion.executeQuery();
-			        
-			        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();
-			        HashMap<Integer, String> lista_sucursal = new HashMap<>();
-			        HashMap<Integer, String> lista_horarios = new HashMap<>();
+			        //Hashmap es un mapa que contiene un key y un valor
+			        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();//funciona para agrupar por el id de pelicula
+			        HashMap<Integer, String> lista_sucursal = new HashMap<>();//creando un mapa para los nombres de las sucursales
+			        HashMap<Integer, String> lista_horarios = new HashMap<>();//creando un mapa para los horarios
 			        
 			        List<String> lista_pelicula = new ArrayList<>();
-			        while (resultado_exhibicion.next()) {
+			        while (resultado_exhibicion.next()) {//guardo los valores del resultado de la consulta
 		                 int id_sala = resultado_exhibicion.getInt("id_sala");
 			        	 int id_exhibicion = resultado_exhibicion.getInt("id_exhibicion");
 		                 String nombre_sucursal = resultado_exhibicion.getString("nombre_sucursal");
 		                 String horario = resultado_exhibicion.getString("horario");
 		
-		                 lista_id.computeIfAbsent(id_sala, i -> new ArrayList<>()).add(id_exhibicion);
+		                 lista_id.computeIfAbsent(id_sala, i -> new ArrayList<>()).add(id_exhibicion);//metodo para verificar si esta ausente el key del mapa crea la lista y si no esta ausente solamente adiciona el valor
 
-		                 if (!lista_sucursal.containsKey(id_sala)){
+		                 if (!lista_sucursal.containsKey(id_sala)){//si la lista de nombres no contiene el key(id_pelicula) entonces lo inserto en el mapa
 		                	 lista_sucursal.put(id_sala, nombre_sucursal);
 		                 }
 		
-		                 if (!lista_horarios.containsKey(id_exhibicion)){
+		                 if (!lista_horarios.containsKey(id_exhibicion)){//verifica si la lista de horarios no contiene el key (id_horarios) entonces lo inserto
 			                 lista_horarios.put(id_exhibicion, horario);
 		                 }
 			        }
 		
-			        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {
-			        	Integer id_sala = entry.getKey();
-		                List<Integer> lista_id_exhibicion = entry.getValue();
+			        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {//entrySet me devuleve el mapa para iterar, lo itero y cada elemento del mapa tiene una estructura (KEY), value
+			        	Integer id_sala = entry.getKey();//tomo el valor de la llave
+		                List<Integer> lista_id_exhibicion = entry.getValue();//tomo el valor en la posicion de esa llave, getvalue me devuelve la lista
 	                    String nombre_sucursal = lista_sucursal.get(id_sala);
 		                
 		                %>
@@ -121,15 +121,15 @@
 					          <img src="img/imagen_peliculas.jpg" width="250px" height="400px"/>
 					          <div class="card-info movie">
 					            <h2><%= nombre_pelicula%></h2>
-					            <h2><%= id_sala%></h2>
+					            <h2>SALA: <%= id_sala%></h2>
 					            <h2><%= nombre_sucursal%></h2>
 					            <hr />
 					            <h3>Horarios</h3>
 					            <table>
 		    		    <% 
 		    		    
-		                for (Integer id_exhibicion : lista_id_exhibicion){
-		                    String horario = lista_horarios.get(id_exhibicion);
+		                for (Integer id_exhibicion : lista_id_exhibicion){//itero sobre la lista que me devolvio getvalue
+		                    String horario = lista_horarios.get(id_exhibicion);//tomo los horarios
 		
 		                    %>
 				                <tr>

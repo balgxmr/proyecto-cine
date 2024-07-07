@@ -63,18 +63,18 @@
         String password = "123";
         conexion = DriverManager.getConnection(jdbcUrl, username, password);
 
-        // Llamar al procedimiento almacenado
+        // Llamar al procedimiento almacenado que inserta los clientes en la base de datos
         String procedimiento = "{call insertar_cliente(?, ?, ?, ?, ?, ?)}";
         llamada = conexion.prepareCall(procedimiento);
 
-        // Establecer los par�metros del procedimiento
+        // Establecer los parametros del procedimiento
         llamada.setString(1, cedula);
         llamada.setString(2, nombre);
         llamada.setString(3, direccion);
         llamada.setString(4, correo);
         llamada.setString(5, telefono);
 
-        // Registrar el par�metro de salida para el ID generado
+        // Registrar el parametro de salida para el ID generado
         llamada.registerOutParameter(6, Types.NUMERIC);
 
         // Ejecutar la llamada al procedimiento almacenado
@@ -83,7 +83,7 @@
         // Obtener el ID generado
         int idGenerado = llamada.getInt(6);
 
-        // Mostrar mensaje de �xito y el ID generado
+        // Mostrar mensaje de exito y el ID generado
         out.println("<h2>REGISTRO EXITOSO</h2>");
         out.println("<p>Nombre: " + nombre + "</p>");
         out.println("<p>Cedula: " + cedula + "</p>");
@@ -98,6 +98,7 @@
     %>
              
              <form action="Pelicula.jsp" method="GET">
+             	<!-- el input hidden se utiliza para enviar el valor del cliente a la siguiente pagina con el formulario -->
              	<input type="hidden" name="id_cliente" value="<%= idGenerado %>"></input>
 
             	<button type="submit">Siguiente</button>

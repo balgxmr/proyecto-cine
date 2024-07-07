@@ -44,7 +44,8 @@
 	    <% CallableStatement llamada = null; %>
     
     
-    	<%      
+    	<%
+    	//valores que llegan desde el formulario
     			String cliente = request.getParameter("id_cliente");
 		    	String exhibicion = request.getParameter("id_exhibicion");
 		    	String asientos = request.getParameter("asientos");
@@ -79,12 +80,12 @@
                int precio_adultos = resultado.getInt("importe_adultos");
                int precio_terceraedad = resultado.getInt("importe_terceraedad");
                
-               //parsear la cantidad a entero
+
                
                int adultosInt = 0;
                int ninosInt = 0;
                int terceraedadInt = 0;
-               
+             //validar que el usuario ingreso un valor si no es 0 por defecto
                if(adultos != ""){
             	   adultosInt = Integer.parseInt(adultos);
 	   	        }
@@ -124,9 +125,9 @@
             </div>
 
             <div class="boleto-info">
-              <h3>(<%= ninos %>) Boleto Niño: </h3>
-              <h3>(<%= adultos %>) Boleto Adulto: </h3>
-              <h3>(<%= terceraedad %>) Boleto Tercera Edad: </h3>
+              <h3>(<%= ninos %>) Boleto Niño: <%= adultosDouble %></h3>
+              <h3>(<%= adultos %>) Boleto Adulto: <%= ninosDouble %></h3>
+              <h3>(<%= terceraedad %>) Boleto Tercera Edad: <%= terceraedadDouble %></h3>
             </div>
 
             <div class="precio-info">
@@ -135,6 +136,7 @@
               <h3>Total: <%= total %></h3>
               
             </div>
+            <!-- se envian todos estos datos mediante formulario -->
             <input type="hidden" name="id_cliente" value="<%= cliente %>"></input>
 			<input type="hidden" name="id_exhibicion" value="<%= exhibicion %>"></input>
 			<input type="hidden" name="asientos" value="<%= asientos %>"></input>

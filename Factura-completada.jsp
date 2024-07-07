@@ -26,7 +26,7 @@
 	
  
     <%
-    
+    //valores que llegan desde el formulario, este es el ultimo paso del flujo por lo que llegan todos los valores para insertarlos todos al mismo tiempo y mantener la integridad de la base de datos
 	    String cliente = request.getParameter("id_cliente");
 		String exhibicion = request.getParameter("id_exhibicion");
 		String asientos = request.getParameter("asientos");
@@ -42,6 +42,7 @@
         int ninosInt = 0;
         int terceraedadInt = 0;
 	    
+        //validar que el usuario ingreso un valor si no es 0 por defecto
 	    if(adultos != ""){
     	    adultosInt = Integer.parseInt(adultos);
         }
@@ -66,8 +67,8 @@
 
       
         
-        // Llamar al procedimiento almacenado
-        String procedimiento = "{call insertar_boleto(?, ?, ?, ?, ?, ?, ?)}";
+        // Llamar al procedimiento almacenado que inserta boleto, este es el ultimo
+        String procedimiento = "{call insertar_boleto(?, ?, ?, ?, ?, ?, ?)}";//tambien llena las tablas de los asientos reservados.
         llamada = conexion.prepareCall(procedimiento);
 
         // Establecer los parametros del procedimiento

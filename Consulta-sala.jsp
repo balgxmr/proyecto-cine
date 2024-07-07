@@ -76,6 +76,7 @@
                    int id_sala = resultado.getInt("id_sala");
 
            %>
+           <!-- imprimir valores que se traen desde la consulta -->
                    <option value="<%= id_sala %>"><%= nombre_sucursal %> --> SALA: <%= id_sala %></option>
                    
            <%                        
@@ -94,7 +95,7 @@
 		
 		<%
 		
-		if (sala != ""){
+		if (sala != ""){//validar que ya el usuario ingreso una sala
 		
 			
 		%>
@@ -105,32 +106,32 @@
 				consulta_sala.setString(1, sala);
 		        
 		        ResultSet resultado_sala = consulta_sala.executeQuery();
-		        
-		        HashMap<Integer, String> lista_nombres = new HashMap<>();
-		        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();
-		        HashMap<Integer, String> lista_horarios = new HashMap<>();
+		        //Hashmap es un mapa que contiene un key y un valor
+		        HashMap<Integer, String> lista_nombres = new HashMap<>();//creando un mapa para los nombres de las peliculas
+		        HashMap<Integer, List<Integer>> lista_id = new HashMap<>();//funciona para agrupar por el id de pelicula
+		        HashMap<Integer, String> lista_horarios = new HashMap<>();//creando un mapa para los horarios
 		        
 		        List<String> lista_pelicula = new ArrayList<>();
-		        while (resultado_sala.next()) {
+		        while (resultado_sala.next()) {//guardo los valores del resultado de la consulta
 	                 int id_pelicula = resultado_sala.getInt("id_pelicula");
 	                 int id_exhibicion = resultado_sala.getInt("id_exhibicion");
 	                 String nombre_pelicula = resultado_sala.getString("nombre_pelicula");
 	                 String horario = resultado_sala.getString("horario");
 	
-	                 if (!lista_nombres.containsKey(id_pelicula)){
+	                 if (!lista_nombres.containsKey(id_pelicula)){//si la lista de nombres no contiene el key(id_pelicula) entonces lo inserto en el mapa
 	                     lista_nombres.put(id_pelicula, nombre_pelicula);
 	                 }
 	
-	                 lista_id.computeIfAbsent(id_pelicula, i -> new ArrayList<>()).add(id_exhibicion);
+	                 lista_id.computeIfAbsent(id_pelicula, i -> new ArrayList<>()).add(id_exhibicion);//metodo para verificar si esta ausente el key del mapa crea la lista y si no esta ausente solamente adiciona el valor
 	
-	                 if (!lista_horarios.containsKey(id_exhibicion)){
+	                 if (!lista_horarios.containsKey(id_exhibicion)){//verifica si la lista de horarios no contiene el key (id_horarios) entonces lo inserto
 		                 lista_horarios.put(id_exhibicion, horario);
 	                 }
 		        }
 	
-		        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {
-		        	Integer id_pelicula = entry.getKey();
-	                List<Integer> lista_id_exhibicion = entry.getValue();
+		        for (Map.Entry<Integer, List<Integer>> entry : lista_id.entrySet()) {//entrySet me devuleve el mapa para iterar, lo itero y cada elemento del mapa tiene una estructura (KEY), value
+		        	Integer id_pelicula = entry.getKey();//tomo el valor de la llave
+	                List<Integer> lista_id_exhibicion = entry.getValue();//tomo el valor en la posicion de esa llave, getvalue me devuelve la lista
 	                
 	                String nombre_pelicula = lista_nombres.get(id_pelicula);
 	                
@@ -144,8 +145,8 @@
 				            <table>
 	    		    <% 
 	    		    
-	                for (Integer id_exhibicion : lista_id_exhibicion){
-	                    String horario = lista_horarios.get(id_exhibicion);
+	                for (Integer id_exhibicion : lista_id_exhibicion){//itero sobre la lista que me devolvio getvalue
+	                    String horario = lista_horarios.get(id_exhibicion);//tomo los horarios
 	
 	                    %>
 			                <tr>
